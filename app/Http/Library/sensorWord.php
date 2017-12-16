@@ -21,7 +21,7 @@ class SensorWord
     */
     public function whereWords()
     {
-        if (in_array('anjing', $this->dictionaryLib()->harsh)) {
+        if (in_array('anjing', $this->dictionaryLib->dicLib->harsh)) {
             echo "ok";
         } else {
             echo "fail";
