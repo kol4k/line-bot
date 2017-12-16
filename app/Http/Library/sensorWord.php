@@ -2,7 +2,7 @@
 
 namespace App\Http\Library;
 
-use App\Http\Library\DictionaryLib;
+// use App\Http\Library\DictionaryLib;
 
 class SensorWord 
 {
@@ -21,10 +21,10 @@ class SensorWord
     */
     public function whereWords()
     {
-        if (in_array('anjing', $this->dictionaryLib->dicLib()->harsh)) {
-            echo "ok";
-        } else {
-            echo "fail";
-        }
+        // if (in_array('anjing', $this->dictionaryLib->dicLib()->harsh)) {
+        //     echo "ok";
+        // } else {
+        //     echo "fail";
+        // }
     }
 }

@@ -19,7 +19,7 @@ class GetMessageService
     
     public function replySend($formData,$harsh)
     {
-        $class_helper = new \App\Http\Library\SensorWord;
+        $class_helper = new \App\Http\Library\DictionaryLib;
         $replyToken = $formData['events']['0']['replyToken'];
         
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
