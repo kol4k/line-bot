@@ -43,5 +43,6 @@ class GetMessageService
             logger("reply success!!");
             return;
         }
+      echo $text; 
     }
 }
