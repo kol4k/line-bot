@@ -9,19 +9,15 @@ class SensorWord
     /**
      * @var DictionaryLib
      */
-    private $dictionaryLib;
-
-    public function __construct(DictionaryLib $dictionaryLib)
-    {
-        $this->dictionaryLib = $dictionaryLib;
-    }
+    // private $dictionaryLib;
 
     /**
     * function for search word
     */
     public function whereWords()
     {
-        if (in_array('anjing', $this->dictionaryLib->dicLib()->harsh)) {
+        $dictionaryLib = $this->app->make('App\Http\Library\DictionaryLib');
+        if (in_array('anjing',$dictionaryLib->dicLib()->harsh)) {
             echo "ok";
         } else {
             echo "fail";
