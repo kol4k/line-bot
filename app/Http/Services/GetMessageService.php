@@ -33,4 +33,10 @@ class GetMessageService
             return;
         }
     }
+    
+    public function test()
+    {
+        $class_helper = new \App\Http\Library\SensorWord;
+        return $class_helper->whereWords()->harsh;
+    }
 }
