@@ -22,14 +22,13 @@ class GetMessageService
     /**
      * @var TranslatorAPI
      */
-    protected $apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=in-id&key='.env('YANDEX_TRNSLTE').'&text=';
+    protected $apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=id-id&key=trnsl.1.1.20171216T092715Z.18943ca79fdb501d.84c04771f13b9fc5fad54f2d9084479cb942eb7a&text=';
     
     public function replySend($formData)
     {
         $client = new Client(); 
         $replyToken = $formData['events']['0']['replyToken'];
         $response = $client->get($apiUrl.$replyToken);
-        $msgResponse = $translator->translate($replyToken, 'id-en');
         
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
         $this->bot = new LINEBot($this->client, ['channelSecret' => env('LINE_BOT_SECRET')]);
