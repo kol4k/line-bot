@@ -30,14 +30,14 @@ class GetMessageService
         $api = 'trnsl.1.1.20171216T092715Z.18943ca79fdb501d.84c04771f13b9fc5fad54f2d9084479cb942eb7a';
         $service_url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=id-en&key='.$api.'&text='.$replyToken;
         $jsonx = file_get_contents($service_url);
-        $objx = json_decode($json); 
-        $text = $objx->text; 
+        $obj = json_decode($json); 
+        $text = $obj->text; 
         
         
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
         $this->bot = new LINEBot($this->client, ['channelSecret' => env('LINE_BOT_SECRET')]);
         
-        $response = $this->bot->replyText($replyToken, $text[0]);
+        $response = $this->bot->replyText($replyToken, $text);
         
         if ($response->isSucceeded()) {
             logger("reply success!!");
