@@ -13,7 +13,7 @@ class DictionaryLib
     * sensorWord Controller
     * @param SensorWord $sensorWord
     */
-    public function dicLib($harsh = [])
+    public function dicLib()
     {
         $harsh = ['anjing','goblok','setan','siamah','anju'];
         $soft = [
