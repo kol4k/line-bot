@@ -30,7 +30,10 @@ class GetMessageController
 
     public function test()
     {
-        $class_helper = new \App\Http\Library\SensorWord;
-        return $class_helper->whereWords();
+        $client = new Client(); 
+        $response = $client->get($apiUrl.urlencode('saya'));
+        $body = json_decode($response->getBody(), TRUE);
+        echo $body.'ok';
+        echo 'test';
     }
 }

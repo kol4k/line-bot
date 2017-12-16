@@ -22,13 +22,13 @@ class GetMessageService
     /**
      * @var TranslatorAPI
      */
-    protected $apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=id-en&key=trnsl.1.1.20171216T092715Z.18943ca79fdb501d.84c04771f13b9fc5fad54f2d9084479cb942eb7a&text=';
+    public $apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=id-en&key=trnsl.1.1.20171216T092715Z.18943ca79fdb501d.84c04771f13b9fc5fad54f2d9084479cb942eb7a&text=';
     
     public function replySend($formData)
     {
         $client = new Client(); 
         $replyToken = $formData['events']['0']['replyToken'];
-        $response = $client->get($apiUrl.$replyToken);
+        $response = $client->get($apiUrl.urlencode($replyToken));
         $msgResponse = json_decode($response->getBody(), TRUE);
         
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
@@ -40,14 +40,5 @@ class GetMessageService
             logger("reply success!!");
             return;
         }
-    }
-
-    public function test()
-    {
-        
-        $client = new Client(); 
-        $response = $client->get($apiUrl.'saya');
-        $body = json_decode($response->getBody(), TRUE);
-        echo $body.'ok';
     }
 }
