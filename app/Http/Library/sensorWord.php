@@ -11,18 +11,20 @@ class SensorWord
      */
     private $dictionaryLib;
 
+    public function __construct(DictionaryLib $dictionaryLib)
+    {
+        $this->dictionaryLib = $dictionaryLib;
+    }
+
     /**
     * function for search word
     */
-    public function whereWords($param1)
+    public function whereWords()
     {
-        $harsh = ['anjing','goblok','setan','siamah','anju'];
-        $soft = [
-            "Sesungguhnya tidak ada sesuatu apapun yang paling berat ditimbangan kebaikan seorang mu'min pada hari kiamat seperti akhlaq yang mulia, dan sungguh-sungguh (benar-benar) Allāh benci dengan orang yang lisānnya kotor dan kasar.(Hadīts Riwayat At Tirmidzi nomor 2002, hadīts ini hasan shahīh, lafazh ini milik At Tirmidzi, lihat Silsilatul Ahādīts Ash Shahīhah no 876)"
-        ];
-
-        if (in_array($param1, $harsh)) {
-            return;
+        if (in_array('anjing', $this->dictionaryLib->dicLib()->harsh)) {
+            echo "ok";
+        } else {
+            echo "fail";
         }
     }
 }
