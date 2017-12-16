@@ -28,8 +28,9 @@ class GetMessageController
         $this->messageService->replySend($request->json()->all());
     }
 
-    public function test(SensorWord $sensorWord)
+    public function test()
     {
-        return $sensorWord->whereWords();
+        $class_helper = new App\Http\Library\SensorWord;
+        return $class_helper->whereWords();
     }
 }
