@@ -35,7 +35,7 @@ class GetMessageController
 
     public function test()
     {
-      $api = 'trnsl.1.1.20171216T092715Z.18943ca79fdb501d.84c04771f13b9fc5fad54f2d9084479cb942eb7a';
+        $api = 'trnsl.1.1.20171216T092715Z.18943ca79fdb501d.84c04771f13b9fc5fad54f2d9084479cb942eb7a';
         $service_url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=id-en&key='.$api.'&text=apa';
         $curl = curl_init($service_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -48,6 +48,6 @@ class GetMessageController
 
         curl_close($curl);
         echo 'test';
-      echo $curl_response;
+      echo $curl_response->text;
     }
 }
