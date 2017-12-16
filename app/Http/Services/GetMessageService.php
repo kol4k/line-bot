@@ -43,6 +43,6 @@ class GetMessageService
     {
         $translator = new Translator(env('YANDEX_TRNSLTE'));
         $msgResponse = $translator->translate('ini hanya test', 'id-en');
-        echo $msgResponse;
+        echo $msgResponse.'ok';
     }
 }
