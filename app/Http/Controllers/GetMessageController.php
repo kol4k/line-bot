@@ -48,6 +48,6 @@ class GetMessageController
 
         curl_close($curl);
         echo 'test';
-      echo $curl_response->text;
+      echo $curl_response[0]['text'];
     }
 }
