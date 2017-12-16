@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GetMessageRequest;
 use App\Http\Services\GetMessageService;
-use App\Http\Library\sensorWord;
+use App\Http\Library\SensorWord;
 
 class GetMessageController
 {
@@ -20,7 +20,7 @@ class GetMessageController
     public function __construct(GetMessageService $messageService)
     {
         $this->messageService = $messageService;
-        $this->whereWords = new sensorWord;
+        $this->whereWords = new SensorWord;
     }
     
     public function getMessage(GetMessageRequest $request)

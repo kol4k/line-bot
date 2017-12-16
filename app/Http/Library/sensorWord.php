@@ -4,7 +4,7 @@ namespace App\Library;
 
 use App\Http\Library\DictionaryLib;
 
-class sensorWord 
+class SensorWord 
 {
     /**
      * @var DictionaryLib
