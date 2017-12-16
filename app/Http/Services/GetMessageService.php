@@ -22,7 +22,7 @@ class GetMessageService
     /**
      * @var TranslatorAPI
      */
-    protected $apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=in-id&key='env('YANDEX_TRNSLTE').'&text=';
+    protected $apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=in-id&key='.env('YANDEX_TRNSLTE').'&text=';
     
     public function replySend($formData)
     {
