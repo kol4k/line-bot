@@ -4,7 +4,8 @@ namespace App\Http\Services;
 
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
-use App\Http\Library\DictionaryLib;
+use Yandex\Translate\Translator;
+use Yandex\Translate\Exception;
 
 class GetMessageService
 {
@@ -17,31 +18,31 @@ class GetMessageService
      */
     private $client;
     /**
-     * @var DictionaryLib
+     * @var Translator
      */
-    private $dicLib;
     
-    public function __construct(DictionaryLib $dicLib)
-    {
-        $this->dicLib = $dicLib;
-    }
     
     public function replySend($formData)
     {
+        $translator = new Translator(env('YANDEX_TRNSLTE'));
         $replyToken = $formData['events']['0']['replyToken'];
+        $msgResponse = $translator->translate($replyToken, 'id-en');
         
-        $harsh = ['anjing','goblok','setan','siamah','anju'];
-
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
         $this->bot = new LINEBot($this->client, ['channelSecret' => env('LINE_BOT_SECRET')]);
-        if (in_array($replyToken, $harsh)) {
-            $response = $this->bot->replyText($replyToken, 'sia tong ngomong kasar!');
-            return $response;
-        }
+        
+        $response = $this->bot->replyText($replyToken, $msgResponse);
+        
         if ($response->isSucceeded()) {
             logger("reply success!!");
             return;
         }
-        return $response;
+    }
+
+    public function test()
+    {
+        $translator = new Translator(env('YANDEX_TRNSLTE'));
+        $msgResponse = $translator->translate('ini hanya test', 'id-en');
+        echo $msgResponse;
     }
 }
