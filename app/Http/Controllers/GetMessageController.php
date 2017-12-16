@@ -20,7 +20,6 @@ class GetMessageController
     public function __construct(GetMessageService $messageService)
     {
         $this->messageService = $messageService;
-        $this->whereWords = new SensorWord;
     }
     
     public function getMessage(GetMessageRequest $request)
@@ -29,8 +28,8 @@ class GetMessageController
         $this->messageService->replySend($request->json()->all());
     }
 
-    public function test()
+    public function test(SensorWord $sensorWord)
     {
-        return $this->whereWords();
+        return $sensorWord->whereWords();
     }
 }
