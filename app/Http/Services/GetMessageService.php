@@ -29,7 +29,7 @@ class GetMessageService
         $replyToken = $formData['events']['0']['replyToken'];
         $api = 'trnsl.1.1.20171216T092715Z.18943ca79fdb501d.84c04771f13b9fc5fad54f2d9084479cb942eb7a';
         $service_url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=id-en&key='.$api.'&text='.$replyToken;
-        $jsonx = file_get_contents($service_url);
+        $json = file_get_contents($service_url);
         $obj = json_decode($json); 
         $text = $obj->text; 
         
