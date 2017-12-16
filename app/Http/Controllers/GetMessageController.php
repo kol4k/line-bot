@@ -47,7 +47,7 @@ class GetMessageController
         }
 
         curl_close($curl);
-        echo 'test';
-      echo $curl_response[0]['text'];
+        echo 'test'.$curl_response[0]->text;
+      echo print_r($curl_response);
     }
 }
