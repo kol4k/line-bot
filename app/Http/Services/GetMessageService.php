@@ -37,7 +37,7 @@ class GetMessageService
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
         $this->bot = new LINEBot($this->client, ['channelSecret' => env('LINE_BOT_SECRET')]);
         
-        $response = $this->bot->replyText($replyToken, $text);
+        $response = $this->bot->replyText($replyToken, $text[0]);
         
         if ($response->isSucceeded()) {
             logger("reply success!!");

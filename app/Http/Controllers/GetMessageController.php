@@ -40,6 +40,6 @@ class GetMessageController
         $json = file_get_contents($service_url);
         $obj = json_decode($json); 
         $text = $obj->text; 
-        return $text[0];
+        return $text;
     }
 }
