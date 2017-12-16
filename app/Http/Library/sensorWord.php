@@ -11,7 +11,7 @@ class sensorWord
      */
     private $dictionaryLib
 
-    public function __construct(DicionaryLibrary $dictionaryLib)
+    public function __construct(DictionaryLib $dictionaryLib)
     {
         $this->dictionaryLib = $dictionaryLib;
     }
