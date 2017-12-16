@@ -14,17 +14,15 @@ class SensorWord
     /**
     * function for search word
     */
-    public function whereWords()
+    public function whereWords($request)
     {
         $harsh = ['anjing','goblok','setan','siamah','anju'];
         $soft = [
             "Sesungguhnya tidak ada sesuatu apapun yang paling berat ditimbangan kebaikan seorang mu'min pada hari kiamat seperti akhlaq yang mulia, dan sungguh-sungguh (benar-benar) Allāh benci dengan orang yang lisānnya kotor dan kasar.(Hadīts Riwayat At Tirmidzi nomor 2002, hadīts ini hasan shahīh, lafazh ini milik At Tirmidzi, lihat Silsilatul Ahādīts Ash Shahīhah no 876)"
         ];
 
-        if (in_array('anjing', $harsh)) {
-            echo "ok";
-        } else {
-            echo "fail";
+        if (in_array($request, $harsh)) {
+            return;
         }
     }
 }
