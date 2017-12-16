@@ -47,8 +47,6 @@ class GetMessageController
         }
 
         curl_close($curl);
-      $ms = json_decode($curl_response);
-        echo $ms;
-      echo $ms->text;
+        var_dump($curl_response);
     }
 }
