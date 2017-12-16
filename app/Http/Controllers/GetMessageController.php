@@ -30,7 +30,7 @@ class GetMessageController
 
     public function test()
     {
-        $class_helper = new App\Http\Library\SensorWord;
+        $class_helper = new \App\Http\Library\SensorWord;
         return $class_helper->whereWords();
     }
 }
