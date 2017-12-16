@@ -9,12 +9,12 @@ class SensorWord
     /**
      * @var DictionaryLib
      */
-    private $dictionaryLib;
+    // private $dictionaryLib;
 
-    public function __construct(DictionaryLib $dictionaryLib)
-    {
-        $this->dictionaryLib = $dictionaryLib;
-    }
+    // public function __construct(DictionaryLib $dictionaryLib)
+    // {
+    //     $this->dictionaryLib = $dictionaryLib;
+    // }
 
     /**
     * function for search word
