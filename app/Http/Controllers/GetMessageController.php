@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GetMessageRequest;
 use App\Http\Services\GetMessageService;
 use App\Http\Library\SensorWord;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Exception\RequestException;
+
 
 class GetMessageController
 {
