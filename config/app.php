@@ -167,7 +167,7 @@ return [
          * Package Service Providers...
          */
 
-        Bluora\Yandex\Providers\YandexTranslateServiceProvider::class,
+        //
 
         /*
          * Application Service Providers...
@@ -225,7 +225,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'YandexTranslate' => Bluora\Yandex\Facades\YandexTranslateFacade::class,
 
     ],
 

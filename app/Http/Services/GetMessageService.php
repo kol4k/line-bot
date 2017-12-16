@@ -4,8 +4,10 @@ namespace App\Http\Services;
 
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
-use Yandex\Translate\Translator;
-use Yandex\Translate\Exception;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Exception\RequestException;
 
 class GetMessageService
 {
@@ -18,14 +20,15 @@ class GetMessageService
      */
     private $client;
     /**
-     * @var Translator
+     * @var TranslatorAPI
      */
-    
+    protected $apiUrl = 'https://translate.yandex.net/api/v1.5/tr.json/translate?lang=in-id&key='env('YANDEX_TRNSLTE').'&text=';
     
     public function replySend($formData)
     {
-        $translator = new Translator(env('YANDEX_TRNSLTE'));
+        $client = new Client(); 
         $replyToken = $formData['events']['0']['replyToken'];
+        $response = $client->get($apiUrl.$replyToken);
         $msgResponse = $translator->translate($replyToken, 'id-en');
         
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
@@ -41,8 +44,9 @@ class GetMessageService
 
     public function test()
     {
-        $translator = new Translator(env('YANDEX_TRNSLTE'));
-        $msgResponse = $translator->translate('ini hanya test', 'id-en');
-        echo $msgResponse.'ok';
+        
+        $client = new Client(); 
+        $response = $client->get($apiUrl.'hanya');
+        echo $response;
     }
 }

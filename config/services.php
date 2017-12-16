@@ -34,9 +34,5 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-    
-    'yandex-translate' => [
-        'key' => env('YANDEX_TRANSLATE_KEY', ''),
-    ],
 
 ];
