@@ -30,9 +30,11 @@ class GetMessageService
     {
         $replyToken = $formData['events']['0']['replyToken'];
         
+        $harsh = ['anjing','goblok','setan','siamah','anju'];
+
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
         $this->bot = new LINEBot($this->client, ['channelSecret' => env('LINE_BOT_SECRET')]);
-        if (in_array($replyToken, $this->dicLib($harsh))) {
+        if (in_array($replyToken, $harsh)) {
             $response = $this->bot->replyText($replyToken, 'sia tong ngomong kasar!');
             return $response;
         }
