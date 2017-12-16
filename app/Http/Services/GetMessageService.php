@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use App\Http\Library\DictionaryLib;
 
 class GetMessageService
 {
@@ -15,28 +16,30 @@ class GetMessageService
      * @var HTTPClient
      */
     private $client;
+    /**
+     * @var DictionaryLib
+     */
+    private $dicLib;
     
-    
-    public function replySend($formData,$harsh)
+    public function __construct(DictionaryLib $dicLib)
     {
-        $class_helper = new \App\Http\Library\DictionaryLib;
+        $this->dicLib = $dicLib;
+    }
+    
+    public function replySend($formData)
+    {
         $replyToken = $formData['events']['0']['replyToken'];
         
         $this->client = new CurlHTTPClient(env('LINE_BOT_ACCESS_TOKEN'));
         $this->bot = new LINEBot($this->client, ['channelSecret' => env('LINE_BOT_SECRET')]);
-        
-        if (in_array($replyToken, $class_helper->dicLib($harsh))) {
-            $response = $this->bot->replyText($replyToken, "Sesungguhnya tidak ada sesuatu apapun yang paling berat ditimbangan kebaikan seorang mu'min pada hari kiamat seperti akhlaq yang mulia, dan sungguh-sungguh (benar-benar) Allāh benci dengan orang yang lisānnya kotor dan kasar.(Hadīts Riwayat At Tirmidzi nomor 2002, hadīts ini hasan shahīh, lafazh ini milik At Tirmidzi, lihat Silsilatul Ahādīts Ash Shahīhah no 876)");
+        if (in_array($replyToken, $this->dicLib($harsh))) {
+            $response = $this->bot->replyText($replyToken, 'sia tong ngomong kasar!');
+            return $response;
         }
         if ($response->isSucceeded()) {
             logger("reply success!!");
             return;
         }
-    }
-    
-    public function test()
-    {
-        $class_helper = new \App\Http\Library\DictionaryLib;
-        return $class_helper->dicLib($harsh);
+        return $response;
     }
 }
